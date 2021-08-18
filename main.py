@@ -84,7 +84,7 @@ def page_nav_df_create():
     # search by attorney
     driver.find_element_by_xpath(search_by_attorney_radio).click()
     # MOBAR number field 
-    driver.find_element_by_xpath(mobar_input).send_keys("71855")
+    driver.find_element_by_xpath(mobar_input).send_keys(input("Enter MOBAR bumber: "))
 
     datelist = get_info()
 
