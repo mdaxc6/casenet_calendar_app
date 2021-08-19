@@ -77,14 +77,17 @@ def page_nav_df_create():
 
     # PAGE NAVIGATION
     # create an instance of the webdriver and load the inital calendar search page
-    driver = webdriver.Chrome(chromedriver_location)
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option('excludeSwitches', ['enable-logging']) #disables logging in console
+    driver = webdriver.Chrome(executable_path=chromedriver_location, options=options)
+
     driver.get('https://www.courts.mo.gov/casenet/cases/calendarSearch.do')
     # 7 day search results
     #driver.find_element_by_xpath(seven_day_search_radio).click()
     # search by attorney
     driver.find_element_by_xpath(search_by_attorney_radio).click()
     # MOBAR number field 
-    driver.find_element_by_xpath(mobar_input).send_keys(input("Enter MOBAR bumber: "))
+    driver.find_element_by_xpath(mobar_input).send_keys(input("Enter MOBAR number: "))
 
     datelist = get_info()
 
@@ -142,11 +145,11 @@ def page_nav_df_create():
     driver.close()
     return main_df
 
-def check_existing_events(service, EMAIL):
+def check_existing_events(service):
     # Check for existing events
     existing_events = []
     now = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-    events_result = service.events().list(calendarId=EMAIL, timeMin=now,
+    events_result = service.events().list(calendarId='primary', timeMin=now,
                                         maxResults=30, singleEvents=True,
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
@@ -159,11 +162,11 @@ def check_existing_events(service, EMAIL):
 
         
 
-def handle_events(service, main_df, EMAIL):
+def handle_events(service, main_df):
 
     # EVENT HANDLING
 
-    existing_events = check_existing_events(service, EMAIL)
+    existing_events = check_existing_events(service)
 
     for i in range(len(main_df)):
         
@@ -186,17 +189,17 @@ def handle_events(service, main_df, EMAIL):
         else :
             print(f'Completed {i + 1} of {len(main_df) }')
 
-        event = service.events().insert(calendarId=EMAIL, body=event).execute()
+        event = service.events().insert(calendarId='primary', body=event).execute()
 
 
 def main():
     service = authenticate()
-    EMAIL = input('Enter email address: ')
+    #EMAIL = input('Enter email address: ')
 
     main_df = page_nav_df_create()
-    handle_events(service, main_df, EMAIL)
+    handle_events(service, main_df)
 
-    print("Completed.")
+    print("Sucessfully added events to Calendar.")
 
 if __name__ == '__main__':
     main()
