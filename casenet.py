@@ -18,6 +18,15 @@ chromedriver_location = "chrome_driver/chromedriver"
 def slice_per(source, step):
     return [source[i::step] for i in range(step)]
 
+def print_district_options():
+    print("11th Judicial District (Saint Charles County):                CT11")
+    print("13th Judicial Circuit (Boone & Callaway Counties):            CT13")
+    print("20th Judicial Circuit (Franklin, Gasconade & Osage Counties): CT20")
+    print("21st Judicial Circuit (St. Louis County):                     CT21")
+    print("22nd Judicial Circuit (City of St. Louis):                    CT22")
+    print("23rd Judicial Circuit (Jefferson County):                     CT23")
+    print("45th Judicial Circuit (Lincoln & Pike Counties):              CT45")
+
 def get_info():
     start_date = input('Start Date(MM/DD/YYYY): ')
     end_date = input('End Date(MM/DD/YYYY): ')
@@ -74,6 +83,8 @@ def page_nav_df_create():
     search_by_attorney_radio = '//*[@id="searchAttorneyRadio"]'
     mobar_input = '//*[@id="inputVO.mobarNumber"]'
     submit_button = '//*[@id="findButton"]'
+    #county id for 45th district
+    county_id_dropdown = '//*[@id="CountyId"]'
 
     # PAGE NAVIGATION
     # create an instance of the webdriver and load the inital calendar search page
@@ -91,12 +102,27 @@ def page_nav_df_create():
 
     datelist = get_info()
 
+    print_district_options()
+    district = input("Enter district (e.g. 'CT11'): ").upper()
+    if district == "CT20":
+        district = "SMPDB0004_CT20"
+    if district == "CT45":
+        district = "SMPDB0005_CT45"
+        county = input("Enter County (LCN or PIK): ").upper()
+
     for date in datelist:
         # clear the date text box
         driver.find_element_by_xpath(date_field).clear()
         # store the district dropdown in an object using Select
         courtDistrictDrp = Select(driver.find_element_by_xpath(district_drop_down))
-        courtDistrictDrp.select_by_value("CT11") # 11th District Saint Charles
+        courtDistrictDrp.select_by_value(str(district))
+        time.sleep(0.75)
+        
+        if district == "SMPDB0005_CT45":
+            # store the district dropdown in an object using Select  
+            countyDrp = Select(driver.find_element_by_xpath(county_id_dropdown))
+            countyDrp.select_by_value(str(county))
+
         # date
         driver.find_element_by_xpath(date_field).send_keys(date)
         # without the pause, the inputs are too fast for casenet to handle
