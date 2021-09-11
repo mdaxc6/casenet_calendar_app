@@ -116,7 +116,7 @@ def page_nav_df_create():
         # store the district dropdown in an object using Select
         courtDistrictDrp = Select(driver.find_element_by_xpath(district_drop_down))
         courtDistrictDrp.select_by_value(str(district))
-        time.sleep(0.75)
+        time.sleep(1)
         
         if district == "SMPDB0005_CT45":
             # store the district dropdown in an object using Select  
@@ -169,14 +169,14 @@ def page_nav_df_create():
         driver.back()
 
     driver.close()
-    return main_df
+    return main_df, datelist
 
-def check_existing_events(service):
+def check_existing_events(service, datelist):
     # Check for existing events
     existing_events = []
     now = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     events_result = service.events().list(calendarId='primary', timeMin=now,
-                                        maxResults=30, singleEvents=True,
+                                        maxResults=len(datelist), singleEvents=True,
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
     # if events exists, add their summary to the existing events list
@@ -188,11 +188,11 @@ def check_existing_events(service):
 
         
 
-def handle_events(service, main_df):
+def handle_events(service, main_df, datelist):
 
     # EVENT HANDLING
 
-    existing_events = check_existing_events(service)
+    existing_events = check_existing_events(service, datelist)
 
     for i in range(len(main_df)):
         
@@ -222,10 +222,10 @@ def main():
     service = authenticate()
     #EMAIL = input('Enter email address: ')
 
-    main_df = page_nav_df_create()
-    handle_events(service, main_df)
+    main_df, datelist = page_nav_df_create()
+    handle_events(service, main_df, datelist)
 
-    print("Sucessfully added events to Calendar.")
+    print("Program has sucessfully completed.")
 
 if __name__ == '__main__':
     main()
