@@ -90,6 +90,7 @@ def page_nav_df_create():
     # create an instance of the webdriver and load the inital calendar search page
     options = webdriver.ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging']) #disables logging in console
+    options.add_argument("--headless") #runs the browser in headless mode
     driver = webdriver.Chrome(executable_path=chromedriver_location, options=options)
 
     driver.get('https://www.courts.mo.gov/casenet/cases/calendarSearch.do')

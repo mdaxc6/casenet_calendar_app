@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Home Page</title>
+</head>
+
+
+<body>
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Missouri Courts Auto-Scheduler</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="comparisons.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FORMS -->
+
+    <!-- MOBAR -->
+    <div>
+        <h2>MOBAR</h2>
+    </div>
+
+    <div class="mb-3">
+        <label for="MOBAR_number_input" class="form-label">Enter MOBAR Number:</label>
+        <input type="text" class="form-control" id="MOBAR_number_input" placeholder="12345">
+    </div>
+
+    <!-- Dates -->
+    <div>
+        <h2>Date Range</h2>
+    </div>
+    <div class="mb-3">
+        <label for="start_date">Start date:</label>
+        <input type="date" id="start_date">
+    </div>
+
+    <div class="mb-3">
+        <label for="end_date">End date:</label>
+        <input type="date" id="end_date">
+    </div>
+
+    <!-- Districts -->
+    <div>
+        <h2>Districts</h2>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="CT11">
+        <label class="form-check-label" for="CT11">
+            11th Judicial District (Saint Charles County)
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="CT13">
+        <label class="form-check-label" for="CT13">
+            13th Judicial Circuit (Boone & Callaway Counties)
+        </label>
+        <ul class="CT13_counties hide">
+            <li><label><input type="checkbox" class="form-check-input" id="BNE">Boone</label></li>
+            <li><label><input type="checkbox" class="form-check-input" id="CWY">Callaway</label></li>
+        </ul>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="CT20">
+        <label class="form-check-label" for="CT20">
+            20th Judicial Circuit (Franklin, Gasconade & Osage Counties)
+        </label>
+        <ul class="CT20_counties hide">
+            <li><label><input type="checkbox" class="form-check-input" id="FKN">Franklin</label></li>
+            <li><label><input type="checkbox" class="form-check-input" id="GAS">Gasconade</label></li>
+            <li><label><input type="checkbox" class="form-check-input" id="OSG">Osage</label></li>
+        </ul>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="CT21">
+        <label class="form-check-label" for="CT21">
+            21st Judicial Circuit (St. Louis County)
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="CT22">
+        <label class="form-check-label" for="CT22">
+            22nd Judicial Circuit (City of St. Louis)
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="CT23">
+        <label class="form-check-label" for="CT23">
+            23rd Judicial Circuit (Jefferson County)
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="CT45">
+        <label class="form-check-label" for="CT45">
+            45th Judicial Circuit (Lincoln & Pike Counties)
+        </label>
+        <ul class="CT45_counties hide">
+            <li><label><input type="checkbox" class="form-check-input" id="LCN">Lincoln</label></li>
+            <li><label><input type="checkbox" class="form-check-input" id="PIK">Pike</label></li>
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById('CT13').onchange = function () {
+            var cart = document.getElementsByClassName('CT13_counties')[0];
+            if (this.checked) cart.classList.remove('hide');
+            else cart.classList.add('hide');
+        }
+        document.getElementById('CT20').onchange = function () {
+            var cart = document.getElementsByClassName('CT20_counties')[0];
+            if (this.checked) cart.classList.remove('hide');
+            else cart.classList.add('hide');
+        }
+        document.getElementById('CT45').onchange = function () {
+            var cart = document.getElementsByClassName('CT45_counties')[0];
+            if (this.checked) cart.classList.remove('hide');
+            else cart.classList.add('hide');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
