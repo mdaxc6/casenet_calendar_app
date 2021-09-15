@@ -18,24 +18,24 @@ chromedriver_location = "chrome_driver/chromedriver"
 def slice_per(source, step):
     return [source[i::step] for i in range(step)]
 
-def print_district_options():
-    print("11th Judicial District (Saint Charles County):                CT11")
-    print("13th Judicial Circuit (Boone & Callaway Counties):            CT13")
-    print("20th Judicial Circuit (Franklin, Gasconade & Osage Counties): CT20")
-    print("21st Judicial Circuit (St. Louis County):                     CT21")
-    print("22nd Judicial Circuit (City of St. Louis):                    CT22")
-    print("23rd Judicial Circuit (Jefferson County):                     CT23")
-    print("45th Judicial Circuit (Lincoln & Pike Counties):              CT45")
+# def print_district_options():
+#     print("11th Judicial District (Saint Charles County):                CT11")
+#     print("13th Judicial Circuit (Boone & Callaway Counties):            CT13")
+#     print("20th Judicial Circuit (Franklin, Gasconade & Osage Counties): CT20")
+#     print("21st Judicial Circuit (St. Louis County):                     CT21")
+#     print("22nd Judicial Circuit (City of St. Louis):                    CT22")
+#     print("23rd Judicial Circuit (Jefferson County):                     CT23")
+#     print("45th Judicial Circuit (Lincoln & Pike Counties):              CT45")
 
-def get_info():
-    start_date = input('Start Date(MM/DD/YYYY): ')
-    end_date = input('End Date(MM/DD/YYYY): ')
-    # get a list of dates in the range specified
-    datelist = pd.date_range(start_date, end_date).tolist()
-    # convert the dates to the desired format mm/dd/yyyy for casenet
-    for i in range(len(datelist)):
-        datelist[i] = datetime.strftime(datelist[i], '%m/%d/%Y')
-    return datelist
+# def get_info():
+#     start_date = input('Start Date(MM/DD/YYYY): ')
+#     end_date = input('End Date(MM/DD/YYYY): ')
+#     # get a list of dates in the range specified
+#     datelist = pd.date_range(start_date, end_date).tolist()
+#     # convert the dates to the desired format mm/dd/yyyy for casenet
+#     for i in range(len(datelist)):
+#         datelist[i] = datetime.strftime(datelist[i], '%m/%d/%Y')
+#     return datelist
 
 def authenticate():
     # If modifying these scopes, delete the file token.json.
@@ -62,7 +62,7 @@ def authenticate():
     return build('calendar', 'v3', credentials=creds)
 
 # FORM INPUT AND SUBMIT
-def page_nav_df_create():
+def page_nav_df_create(user_json_data):
     # DATAFRAME
     main_df = pd.DataFrame({
         "date" : [],
@@ -99,80 +99,104 @@ def page_nav_df_create():
     # search by attorney
     driver.find_element_by_xpath(search_by_attorney_radio).click()
     # MOBAR number field 
-    driver.find_element_by_xpath(mobar_input).send_keys(input("Enter MOBAR number: "))
+    driver.find_element_by_xpath(mobar_input).send_keys(user_json_data["MOBAR_Number"])
 
-    datelist = get_info()
+    start_date = user_json_data["start_date"]
+    end_date = user_json_data["end_date"]
+    # get a list of dates in the range specified
+    datelist = pd.date_range(start_date, end_date).tolist()
+    # convert the dates to the desired format mm/dd/yyyy for casenet
+    for k in range(len(datelist)):
+        datelist[k] = datetime.strftime(datelist[k], '%m/%d/%Y')
 
-    print_district_options()
-    district = input("Enter district (e.g. 'CT11'): ").upper()
-    if district == "CT20":
-        district = "SMPDB0004_CT20"
-    if district == "CT45":
-        district = "SMPDB0005_CT45"
-        county = input("Enter County (LCN or PIK): ").upper()
+    for j, district in enumerate(user_json_data['counties']):
+        print(district)
+        if "CT" in district:
+            main_district = district
+        for date in datelist:
+            # clear the date text box
+            driver.find_element_by_xpath(date_field).clear()
+            
+            # store the district dropdown in an object using Select
+            courtDistrictDrp = Select(driver.find_element_by_xpath(district_drop_down))
+            courtDistrictDrp.select_by_value(str(main_district))
+            time.sleep(1)
+            
+            if "CT" not in district:
+                # store the district dropdown in an object using Select  
+                countyDrp = Select(driver.find_element_by_xpath(county_id_dropdown))
+                countyDrp.select_by_value(str(district))
+                    
 
-    for date in datelist:
-        # clear the date text box
-        driver.find_element_by_xpath(date_field).clear()
-        # store the district dropdown in an object using Select
-        courtDistrictDrp = Select(driver.find_element_by_xpath(district_drop_down))
-        courtDistrictDrp.select_by_value(str(district))
-        time.sleep(1)
-        
-        if district == "SMPDB0005_CT45":
-            # store the district dropdown in an object using Select  
-            countyDrp = Select(driver.find_element_by_xpath(county_id_dropdown))
-            countyDrp.select_by_value(str(county))
 
-        # date
-        driver.find_element_by_xpath(date_field).send_keys(date)
-        # without the pause, the inputs are too fast for casenet to handle
-        time.sleep(1) 
-        # submit 
-        driver.find_element_by_xpath(submit_button).click()
+            # date
+            driver.find_element_by_xpath(date_field).send_keys(date)
+            # without the pause, the inputs are too fast for casenet to handle
+            time.sleep(1) 
+            # submit 
+            driver.find_element_by_xpath(submit_button).click()
 
-        if len(driver.find_elements_by_xpath('//*[contains(text(), "Your query returned no matches to be viewed at this site.")]')) > 0:
-            continue
-        
-        # INFO GATHERING
-        i=1
-        data = []
-        raw_text = []
-        # get current date
-        current_date = driver.find_element_by_xpath('/html/body/table/tbody/tr[2]/td/table/tbody/tr[2]/td/table/tbody/tr[1]/td/table/tbody/tr[1]/td[2]').text
-        # collect information from the table
-        while driver.find_elements_by_xpath(f'//td[@class="td{i}"]'):
-            data.append(driver.find_elements_by_xpath(f'//td[@class="td{i}"]'))
-            i += 1
-        # parse text into a list
-        for d in data:
-            for i in d:
-                raw_text.append(i.text)       
-        # slices the data into lists of each feild 
-        organized_data = slice_per(raw_text, 9)
+            if len(driver.find_elements_by_xpath('//*[contains(text(), "Your query returned no matches to be viewed at this site.")]')) > 0:
+                continue
+            
+            # INFO GATHERING
+            i=1
+            data = []
+            raw_text = []
+            # get current date
+            current_date = driver.find_element_by_xpath('/html/body/table/tbody/tr[2]/td/table/tbody/tr[2]/td/table/tbody/tr[1]/td/table/tbody/tr[1]/td[2]').text
+            # collect information from the table
+            while driver.find_elements_by_xpath(f'//td[@class="td{i}"]'):
+                data.append(driver.find_elements_by_xpath(f'//td[@class="td{i}"]'))
+                i += 1
+            # parse text into a list
+            for d in data:
+                for i in d:
+                    raw_text.append(i.text)       
+            # slices the data into lists of each feild 
+            organized_data = slice_per(raw_text, 9)
 
-        # create data frame to hold the data
-        df = pd.DataFrame({
-            "date" : current_date,
-            "case_num" : organized_data[0],
-            "case_style" : organized_data[1],
-            "time": organized_data[2],
-            "days": organized_data[3],
-            "event": organized_data[5],
-            "location": organized_data[7],
-            "judge": organized_data[8]
-        })
-        # add collected data to main dataframe
-        main_df = pd.concat([df, main_df], axis=0, join='inner')
-        main_df.drop_duplicates(inplace=True)
-        main_df.reset_index(drop=True, inplace=True)
-        # go back to previous page
-        driver.back()
+            # create data frame to hold the data
+            df = pd.DataFrame({
+                "date" : current_date,
+                "case_num" : organized_data[0],
+                "case_style" : organized_data[1],
+                "time": organized_data[2],
+                "days": organized_data[3],
+                "event": organized_data[5],
+                "location": organized_data[7],
+                "judge": organized_data[8]
+            })
+            # add collected data to main dataframe
+            main_df = pd.concat([df, main_df], axis=0, join='inner')
+            main_df.drop_duplicates(inplace=True)
+            main_df.reset_index(drop=True, inplace=True)
+            # go back to previous page
+            driver.back()
 
     driver.close()
     return main_df, datelist
 
-def check_existing_events(service, datelist):
+# def check_existing_events(service, datelist):
+#     # Check for existing events
+#     existing_events = []
+#     now = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
+#     events_result = service.events().list(calendarId='primary', timeMin=now,
+#                                         maxResults=len(datelist), singleEvents=True,
+#                                         orderBy='startTime').execute()
+#     events = events_result.get('items', [])
+#     # if events exists, add their summary to the existing events list
+#     if not events:
+#         print('No upcoming events found.')
+#     for event in events:
+#         existing_events.append(event['summary'])
+#     return existing_events
+
+        
+
+def handle_events(service, main_df, datelist):
+
+    # EVENT HANDLING
     # Check for existing events
     existing_events = []
     now = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
@@ -184,16 +208,7 @@ def check_existing_events(service, datelist):
     if not events:
         print('No upcoming events found.')
     for event in events:
-        existing_events.append(event['summary'])
-    return existing_events
-
-        
-
-def handle_events(service, main_df, datelist):
-
-    # EVENT HANDLING
-
-    existing_events = check_existing_events(service, datelist)
+        existing_events.append(event['description'])
 
     for i in range(len(main_df)):
         
@@ -209,8 +224,8 @@ def handle_events(service, main_df, datelist):
                 'timeZone': 'America/Chicago',
             },
         }
-        
-        if event['summary'] in existing_events:
+        print(event['description'])
+        if event['description'] in existing_events:
             print('Event already exists.')
             continue
         else :
@@ -219,14 +234,14 @@ def handle_events(service, main_df, datelist):
         event = service.events().insert(calendarId='primary', body=event).execute()
 
 
-def main():
-    service = authenticate()
-    #EMAIL = input('Enter email address: ')
+# def main():
+#     service = authenticate()
+#     #EMAIL = input('Enter email address: ')
 
-    main_df, datelist = page_nav_df_create()
-    handle_events(service, main_df, datelist)
+#     main_df, datelist = page_nav_df_create()
+#     handle_events(service, main_df, datelist)
 
-    print("Program has sucessfully completed.")
+#     print("Program has sucessfully completed.")
 
 if __name__ == '__main__':
     main()
