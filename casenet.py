@@ -110,9 +110,17 @@ def page_nav_df_create(user_json_data):
         datelist[k] = datetime.strftime(datelist[k], '%m/%d/%Y')
 
     for j, district in enumerate(user_json_data['counties']):
-        print(district)
+        
         if "CT" in district:
             main_district = district
+
+        if (j < len(user_json_data["counties"])):
+            if (district == main_district) and ("CT" not in str(user_json_data["counties"][j+1])):
+                print(f"skipping: {district}")
+                continue
+            else:
+                print(district)
+        
         for date in datelist:
             # clear the date text box
             driver.find_element_by_xpath(date_field).clear()
@@ -195,21 +203,22 @@ def page_nav_df_create(user_json_data):
         
 
 def handle_events(service, main_df, datelist):
-
+    print(f"Datelist Length: {len(datelist)}")
     # EVENT HANDLING
     # Check for existing events
     existing_events = []
     now = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     events_result = service.events().list(calendarId='primary', timeMin=now,
-                                        maxResults=len(datelist), singleEvents=True,
+                                        maxResults=len(datelist) + 250, singleEvents=True,
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
     # if events exists, add their summary to the existing events list
     if not events:
         print('No upcoming events found.')
     for event in events:
-        existing_events.append(event['description'])
+        existing_events.append(event["summary"])
 
+    print(f'Existing Events: {existing_events}')
     for i in range(len(main_df)):
         
         event = {
@@ -224,14 +233,15 @@ def handle_events(service, main_df, datelist):
                 'timeZone': 'America/Chicago',
             },
         }
-        print(event['description'])
-        if event['description'] in existing_events:
+        
+        if event['summary'] in existing_events:
             print('Event already exists.')
             continue
         else :
+            event = service.events().insert(calendarId='primary', body=event).execute()
             print(f'Completed {i + 1} of {len(main_df) }')
 
-        event = service.events().insert(calendarId='primary', body=event).execute()
+        
 
 
 # def main():
