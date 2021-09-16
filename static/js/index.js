@@ -43,14 +43,16 @@ function handleSubmit(event) {
                 console.log(`Looks like there was a problem. Status code: ${response.status}`);
                 return;
             }
-            response.json().then(function (data) {
-                console.log(data);
-            });
+        })
+        .then(data => {
+            //Redirect is the URL inside the text of the response promise
+            window.location.replace('/test');
         })
         .catch(function (error) {
             console.log("Fetch error: " + error);
         });
 }
+
 
 
 

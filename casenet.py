@@ -114,12 +114,14 @@ def page_nav_df_create(user_json_data):
         if "CT" in district:
             main_district = district
 
-        if (j < len(user_json_data["counties"])):
+        if (j < len(user_json_data["counties"]) - 1):
             if (district == main_district) and ("CT" not in str(user_json_data["counties"][j+1])):
                 print(f"skipping: {district}")
                 continue
             else:
                 print(district)
+        else:
+            print(district)
         
         for date in datelist:
             # clear the date text box
@@ -203,7 +205,7 @@ def page_nav_df_create(user_json_data):
         
 
 def handle_events(service, main_df, datelist):
-    print(f"Datelist Length: {len(datelist)}")
+    #print(f"Datelist Length: {len(datelist)}")
     # EVENT HANDLING
     # Check for existing events
     existing_events = []
@@ -218,7 +220,7 @@ def handle_events(service, main_df, datelist):
     for event in events:
         existing_events.append(event["summary"])
 
-    print(f'Existing Events: {existing_events}')
+    #print(f'Existing Events: {existing_events}')
     for i in range(len(main_df)):
         
         event = {

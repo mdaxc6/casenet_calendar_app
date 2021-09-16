@@ -1,5 +1,5 @@
 from casenet import authenticate, slice_per, page_nav_df_create, handle_events
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, url_for, redirect
 from flask_cors import CORS
 
 chromedriver_location = "chrome_driver/chromedriver"
@@ -26,7 +26,14 @@ def process():
     service = authenticate()
     main_df, datelist = page_nav_df_create(data)
     handle_events(service, main_df, datelist)
-    return render_template("test.html")
+    return redirect('/test')
+
+
+@app.route('/test', methods=['GET','POST'])
+def loading():
+    return render_template('test.html')
+
+
 
 # @app.route("/about")
 # def about():
