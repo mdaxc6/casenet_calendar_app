@@ -22,22 +22,24 @@ def index():
 
 @app.route('/', methods=['POST'])
 def process():
-    data = request.get_json()
-    service = authenticate()
-    main_df, datelist = page_nav_df_create(data)
-    handle_events(service, main_df, datelist)
-    return redirect('/test')
+    if request.method == "POST":
+        data = request.get_json()
+        service = authenticate()
+        main_df, datelist = page_nav_df_create(data)
+        handle_events(service, main_df, datelist)
+        return redirect('/confirmation')
+    else:
+        return render_template("index.html")
 
 
-@app.route('/test', methods=['GET','POST'])
-def loading():
-    return render_template('test.html')
+@app.route('/confirmation', methods=['GET','POST'])
+def confirmation():
+    return render_template('confirmation.html')
 
 
-
-# @app.route("/about")
-# def about():
-#     return render_template("about.html")
+@app.route("/about")
+def about():
+    return render_template("about.html")
 # #app page - input
 
 

@@ -19,6 +19,8 @@ document.getElementById('CT45').onchange = function () {
 function handleSubmit(event) {
     event.preventDefault();
 
+    loading();
+
     const data = new FormData(event.target);
 
     const value = Object.fromEntries(data.entries());
@@ -46,14 +48,19 @@ function handleSubmit(event) {
         })
         .then(data => {
             //Redirect is the URL inside the text of the response promise
-            window.location.replace('/test');
+            window.location.replace('/confirmation');
         })
         .catch(function (error) {
             console.log("Fetch error: " + error);
         });
 }
 
-
+function loading(){
+    var button = document.getElementsByName("submit_button")[0];
+    var loading_gif = document.getElementsByName("loading")[0];
+    button.classList.add("hide");
+    loading_gif.classList.remove("hide");
+}
 
 
 const form = document.querySelector('form');
