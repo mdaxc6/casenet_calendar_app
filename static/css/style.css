@@ -1,3 +1,58 @@
+/* MAIN PAGE & GLOBAL*/
+* {
+    box-sizing: border-box;
+    font-family: Ubuntu, sans-serif;
+}
+
+html,
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+}
+
+
+input[type='text'] { 
+    font-size: 24px;
+    width: 150px;
+}
+
+input[type='date'] { 
+    font-size: 24px;
+    width: 200px;
+}
+
+#background-container {
+    background-color: rgba(197, 195, 195, 0.5);
+    height: 100% ;
+}
+
+#background-row {
+    height: 100%;
+}
+
+#submit_button{
+    width: 200px;
+
+}
+
+#districts-group{
+    margin: 5%;
+}
+
+#date-group{
+    margin: 5%;
+}
+
+#mobar-group{
+    margin: 5%;
+}
+
+.container {
+    height: 100%;
+}
+
 .hide{
     display: none;
 }
@@ -8,4 +63,16 @@ div#loading {
     background-image: url("../images/loading_gif.gif");
     background-repeat: no-repeat;
     cursor: wait;
+}
+
+
+
+
+
+
+
+
+
+#confirmation{
+    text-justify: ;
 }

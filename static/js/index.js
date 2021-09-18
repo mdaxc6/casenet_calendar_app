@@ -58,8 +58,10 @@ function handleSubmit(event) {
 function loading(){
     var button = document.getElementsByName("submit_button")[0];
     var loading_gif = document.getElementsByName("loading")[0];
+    var loading_label = document.getElementsByName("loading-label")[0];
     button.classList.add("hide");
     loading_gif.classList.remove("hide");
+    loading_label.classList.remove("hide");
 }
 
 
