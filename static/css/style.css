@@ -65,6 +65,9 @@ div#loading {
     cursor: wait;
 }
 
+span{
+    color: rgb(148, 3, 3)
+}
 
 
 
