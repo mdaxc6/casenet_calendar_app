@@ -19,7 +19,9 @@ document.getElementById('CT45').onchange = function () {
 function handleSubmit(event) {
     event.preventDefault();
 
-    loading();
+    if (error_check() == false){
+        return;
+    }
 
     const data = new FormData(event.target);
 
@@ -28,9 +30,17 @@ function handleSubmit(event) {
     // value.dates = data.getAll("date");
     value.counties = data.getAll("checkbox");
 
-    console.log({
-        value
-    });
+    document.getElementById("districts_error").innerHTML = "";
+    if (value.counties.length == 0){
+        district_error = "Please choose at least 1 district.";
+        document.getElementById("districts_error").innerHTML = district_error;
+        return;
+    }
+
+
+    console.log(value.counties);
+
+    loading();
 
     fetch(`/`, {
             method: "POST",
@@ -55,6 +65,39 @@ function handleSubmit(event) {
         });
 }
 
+function error_check() {
+    var mobar = document.forms["search_info_form"]["MOBAR_number_input"].value;
+    var start_date = document.forms["search_info_form"]["start_date"].value;
+    var end_date = document.forms["search_info_form"]["end_date"].value;
+
+    var submit = true;
+
+    //remove errors
+    document.getElementById("mobar_error").innerHTML = "";
+    document.getElementById("start_date_error").innerHTML = "";
+    document.getElementById("end_date_error").innerHTML = "";
+
+    if (mobar == null || mobar == ""){
+        mobarError = "Please enter your MOBAR number.";
+        document.getElementById("mobar_error").innerHTML = mobarError;
+        submit = false;
+    }
+
+    if (start_date == null || start_date == ""){
+        mobarError = "Please enter a starting date.";
+        document.getElementById("start_date_error").innerHTML = mobarError;
+        submit = false;
+    }
+
+    if (end_date == null || end_date == ""){
+        mobarError = "Please enter an ending date.";
+        document.getElementById("end_date_error").innerHTML = mobarError;
+        submit = false;
+    }
+
+    return submit;
+}
+
 function loading(){
     var button = document.getElementsByName("submit_button")[0];
     var loading_gif = document.getElementsByName("loading")[0];
@@ -63,6 +106,7 @@ function loading(){
     loading_gif.classList.remove("hide");
     loading_label.classList.remove("hide");
 }
+
 
 
 const form = document.querySelector('form');
