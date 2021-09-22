@@ -80,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div class="row justify-content-center" id="districts-group">
+                    <div class="row justify-content-center overflow-auto" id="districts-group">
                         <!-- Districts -->
                         <div class="col-md-12">
                             <h2>Districts</h2>
@@ -88,8 +88,155 @@
                                 <p id="districts_error"></p>
                             </span>
                         </div>
-                        <div class="row justify-content-center overflow-auto" id="districts-row">
-                            <div class="col-md-12" id="district-checkboxes">
+                        <div class="row justify-content-center " id="districts-row">
+                            <div class="col-md-12 " id="district-checkboxes">
+                                <!-- CT01 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0004_CT01" id="CT01">
+                                    <label class="form-check-label" for="CT01">
+                                        1st Judicial Circuit (Clark, Schuyler & Scotland Counties)
+                                    </label>
+                                    <ul class="CT01_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CLK" id="CLK">Clark</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SLD" id="SLD">Scotland</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SYR" id="SYR">Schuyler</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT02 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0004_CT02" id="CT02">
+                                    <label class="form-check-label" for="CT02">
+                                        2nd Judicial Circuit (Adair, Knox & Lewis Counties)
+                                    </label>
+                                    <ul class="CT02_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="ADR" id="ADR">Adair</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="KNX" id="KNX">Knox</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="LEW" id="LEW">Lewis</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT03 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT03" id="CT03">
+                                    <label class="form-check-label" for="CT03">
+                                        3rd Judicial Circuit (Grundy, Harrison, Mercer & Putnam Counties)
+                                    </label>
+                                    <ul class="CT03_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="GRU" id="GRU">Grundy</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="HAR" id="HAR">Harrison</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MER" id="MER">Mercer</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="PUT" id="PUT">Putnam</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT04 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT04" id="CT04">
+                                    <label class="form-check-label" for="CT04">
+                                        4th Judicial Circuit (Atchison, Gentry, Holt, Nodaway & Worth Counties)
+                                    </label>
+                                    <ul class="CT04_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="ATN" id="ATN">Atchison</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="GEN" id="GEN">Gentry</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="HOL" id="HOL">Holt</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="NDY" id="NDY">Nodaway</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="WOR" id="WOR">Worth</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT05 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT05"
+                                        id="CT05">
+                                    <label class="form-check-label" for="CT05">
+                                        5th Judicial Circuit (Andrew & Buchanan Counties)
+                                    </label>
+                                    <ul class="CT05_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="ADW" id="ADW">Andrew</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="BUC" id="BUC">Buchanan</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT06 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT06" id="CT06">
+                                    <label class="form-check-label" for="CT06">
+                                        6th Judicial Circuit (Platte County)
+                                    </label>
+                                </div>
+                                <!-- CT07 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT07" id="CT07">
+                                    <label class="form-check-label" for="CT07">
+                                        7th Judicial Circuit (Clay County)
+                                    </label>
+                                </div>
+                                <!-- CT08 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT08"
+                                        id="CT08">
+                                    <label class="form-check-label" for="CT08">
+                                        8th Judicial Circuit (Carroll & Ray Counties)
+                                    </label>
+                                    <ul class="CT08_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CRL" id="CRL">Carroll</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="RAY" id="RAY">Ray</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT09 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT09" id="CT09">
+                                    <label class="form-check-label" for="CT09">
+                                        9th Judicial Circuit (Sullivan, Linn & Chariton Counties)
+                                    </label>
+                                    <ul class="CT09_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CHN" id="CHN">Chariton</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="LIN" id="LIN">Knox</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SUL" id="SUL">Sullivan</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT10 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0004_CT10" id="CT10">
+                                    <label class="form-check-label" for="CT10">
+                                        10th Judicial Circuit (Marion, Monroe & Ralls Counties)
+                                    </label>
+                                    <ul class="CT10_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MNR" id="MNR">Monroe</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MRN" id="MRN">Marion</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="RAL" id="RAL">Ralls</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT11 -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="checkbox" value="CT11"
                                         id="CT11">
@@ -97,6 +244,23 @@
                                         11th Judicial District (Saint Charles County)
                                     </label>
                                 </div>
+                                <!-- CT12 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT12"
+                                        id="CT12">
+                                    <label class="form-check-label" for="CT12">
+                                        12th Judicial Circuit (Audrain, Montgomery &amp; Warren Counties)
+                                    </label>
+                                    <ul class="CT12_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="AUD" id="AUD">Audrain</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MTY" id="MTY">Montgomery</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="WRN" id="WRN">Warren</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT13 -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="checkbox" value="CT13"
                                         id="CT13">
@@ -110,6 +274,79 @@
                                                     value="CWY" id="CWY">Callaway</label></li>
                                     </ul>
                                 </div>
+                                <!-- CT14 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT14" id="CT14">
+                                    <label class="form-check-label" for="CT14">
+                                        14th Judicial Circuit (Randolph & Howard Counties)
+                                    </label>
+                                    <ul class="CT14_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="HWD" id="HWD">Howard</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="RAN" id="RAN">Randolph</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT15 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT15" id="CT15">
+                                    <label class="form-check-label" for="CT15">
+                                        15th Judicial Circuit (Saline & Lafayette Counties)
+                                    </label>
+                                    <ul class="CT15_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="LAF" id="LAF">Lafayette</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SAL" id="SAL">Saline</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT16 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT16"
+                                        id="CT16">
+                                    <label class="form-check-label" for="CT16">
+                                        16th Judicial Circuit (Jackson County)
+                                    </label>
+                                </div>
+                                <!-- CT17 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT17"
+                                        id="CT17">
+                                    <label class="form-check-label" for="CT17">
+                                        17th Judicial Circuit (Cass & Johnson Counties)
+                                    </label>
+                                    <ul class="CT17_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CAS" id="CAS">Cass</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="JON" id="JON">Johnson</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT18 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT18"
+                                        id="CT18">
+                                    <label class="form-check-label" for="CT18">
+                                        18th Judicial Circuit (Cooper & Pettis Counties)
+                                    </label>
+                                    <ul class="CT18_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CPR" id="CPR">Cooper</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="PET" id="PET">Pettis</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT19 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0004_CT19" id="CT19">
+                                    <label class="form-check-label" for="CT19">
+                                        19th Judicial Circuit (Cole County)
+                                    </label>
+                                </div>
+                                <!-- CT20 -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="checkbox"
                                         value="SMPDB0004_CT20" id="CT20">
@@ -125,6 +362,7 @@
                                                     value="OSG" id="OSG">Osage</label></li>
                                     </ul>
                                 </div>
+                                <!-- CT21 -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="checkbox" value="CT21"
                                         id="CT21">
@@ -132,6 +370,7 @@
                                         21st Judicial Circuit (St. Louis County)
                                     </label>
                                 </div>
+                                <!-- CT22 -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="checkbox" value="CT22"
                                         id="CT22">
@@ -139,6 +378,7 @@
                                         22nd Judicial Circuit (City of St. Louis)
                                     </label>
                                 </div>
+                                <!-- CT23 -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="checkbox" value="CT23"
                                         id="CT23">
@@ -146,6 +386,332 @@
                                         23rd Judicial Circuit (Jefferson County)
                                     </label>
                                 </div>
+                                <!-- CT24 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT24" id="CT24">
+                                    <label class="form-check-label" for="CT24">
+                                        24th Judicial Circuit (Madison, Ste. Genevieve, St. Francois & Washington
+                                        Counties)
+                                    </label>
+                                    <ul class="CT24_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MAD" id="MAD">Madison</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SFR" id="SFR">St. Francois</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SGE" id="SGE">Ste. Genevieve</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="WAS" id="WAS">Washington</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT25 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT25" id="CT25">
+                                    <label class="form-check-label" for="CT25">
+                                        25th Judicial Circuit (Maries, Phelps, Pulaski & Texas Counties)
+                                    </label>
+                                    <ul class="CT25_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MRS" id="MRS">Maries County</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="PHE" id="PHE">Phelps County</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="PUL" id="PUL">Pulaski</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="TEX" id="TEX">Texas</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT26 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0004_CT26" id="CT26">
+                                    <label class="form-check-label" for="CT26">
+                                        26th Judicial Circuit (Camden, Laclede, Miller, Morgan & Moniteau Counties)
+                                    </label>
+                                    <ul class="CT26_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CAM" id="CAM">Camden</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="LAC" id="LAC">Laclede</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MIL" id="MIL">Miller</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MOR" id="MOR">Morgan</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MTU" id="MTU">Moniteau</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT27 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT27" id="CT27">
+                                    <label class="form-check-label" for="CT27">
+                                        27th Judicial Circuit (Bates, Henry & St. Clair Counties)
+                                    </label>
+                                    <ul class="CT27_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="BAT" id="BAT">Bates</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="HEN" id="HEN">Henry</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SCL" id="SCL">St. Clair</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT28 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0004_CT28" id="CT28">
+                                    <label class="form-check-label" for="CT28">
+                                        28th Judicial Circuit (Barton, Cedar, Dade & Vernon Counties)
+                                    </label>
+                                    <ul class="CT28_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="BAR" id="BAR">Barton</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CDR" id="CDR">Cedar</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="DAD" id="DAD">Dade</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="VER" id="VER">Vernon</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT29 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT29" id="CT29">
+                                    <label class="form-check-label" for="CT29">
+                                        29th Judicial Circuit (Jasper County)
+                                    </label>
+                                </div>
+                                <!-- CT30 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT30" id="CT30">
+                                    <label class="form-check-label" for="CT30">
+                                        30th Judicial Circuit (Benton, Dallas, Hickory, Polk & Webster Counties)
+                                    </label>
+                                    <ul class="CT30_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="BEN" id="BEN">Benton</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="DAL" id="DAL">Dallas</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="HIK" id="HIK">Hickory</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="POL" id="POL">Polk</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="WEB" id="WEB">Webster</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT31 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT31"
+                                        id="CT31">
+                                    <label class="form-check-label" for="CT31">
+                                        31st Judicial Circuit (Greene County)
+                                    </label>
+                                </div>
+                                <!-- CT32 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT32" id="CT32">
+                                    <label class="form-check-label" for="CT32">
+                                        32nd Judicial Circuit ( Bollinger, Cape Girardeau & Perry Counties)
+                                    </label>
+                                    <ul class="CT32_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="BOL" id="BOL">Bollinger</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CPG" id="CPG">Cape Girardeau</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="PER" id="PER">Perry</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT33 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT33" id="CT33">
+                                    <label class="form-check-label" for="CT33">
+                                        33rd Judicial Circuit (Mississippi & Scott Counties)
+                                    </label>
+                                    <ul class="CT33_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MIS" id="MIS">Mississippi</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SCT" id="SCT">Scott</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT34 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT34" id="CT34">
+                                    <label class="form-check-label" for="CT34">
+                                        34th Judicial Circuit (New Madrid & Pemiscot Counties)
+                                    </label>
+                                    <ul class="CT34_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="NMD" id="NMD">New Madrid</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="PEM" id="PEM">Pemiscot</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT35 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT35" id="CT35">
+                                    <label class="form-check-label" for="CT35">
+                                        35th Judicial Circuit (Dunklin & Stoddard Counties)
+                                    </label>
+                                    <ul class="CT35_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="DUN" id="DUN">Dunklin</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SDD" id="SDD">Stoddard</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT36 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0004_CT36" id="CT36">
+                                    <label class="form-check-label" for="CT36">
+                                        36th Judicial Circuit (Butler & Ripley Counties)
+                                    </label>
+                                    <ul class="CT36_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="BTR" id="BTR">Butler</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="RIP" id="RIP">Ripley</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT37 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT37" id="CT37">
+                                    <label class="form-check-label" for="CT37">
+                                        37th Judicial Circuit (Carter, Howell, Oregon & Shannon Counties)
+                                    </label>
+                                    <ul class="CT37_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CTR" id="CTR">Carter</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="HWL" id="HWL">Howell</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="ORE" id="ORE">Oregon</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SHA" id="SHA">Shannon</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT38 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT38"
+                                        id="CT38">
+                                    <label class="form-check-label" for="CT38">
+                                        38th Judicial Circuit (Christian County)
+                                    </label>
+                                </div>
+                                <!-- CT39 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT39"
+                                        id="CT39">
+                                    <label class="form-check-label" for="CT39">
+                                        39th Judicial Circuit (Barry, Lawrence & Stone Counties)
+                                    </label>
+                                    <ul class="CT39_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="BRY" id="BRY">Barry</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="LAW" id="LAW">Lawrence</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="STN" id="STN">Stone</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT40 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0001_CT40" id="CT40">
+                                    <label class="form-check-label" for="CT40">
+                                        40th Judicial Circuit (Newton & McDonald Counties)
+                                    </label>
+                                    <ul class="CT40_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MCD" id="MCD">McDonald</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="NWT" id="NWT">Newton</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT41 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0004_CT41" id="CT41">
+                                    <label class="form-check-label" for="CT41">
+                                        41st Judicial Circuit (Macon & Shelby Counties)
+                                    </label>
+                                    <ul class="CT41_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="MAC" id="MAC">Macon</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="SBY" id="SBY">Shelby</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT42 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT42" id="CT42">
+                                    <label class="form-check-label" for="CT42">
+                                        42nd Judicial Circuit (Dent, Crawford, Iron, Reynolds & Wayne Counties)
+                                    </label>
+                                    <ul class="CT42_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CFD" id="CFD">Crawford</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="DEN" id="DEN">Dent</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="IRN" id="IRN">Iron</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="REY" id="REY">Reynolds</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="WAY" id="WAY">Wayne</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT43 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT43" id="CT43">
+                                    <label class="form-check-label" for="CT43">
+                                        43rd Judicial Circuit (DeKalb, Daviess, Clinton, Caldwell & Livingston Counties)
+                                    </label>
+                                    <ul class="CT43_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CDL" id="CDL">Caldwell</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="CLN" id="CLN">Clinton</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="DAV" id="DAV">Daviess</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="DEK" id="DEK">DeKalb</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="LIV" id="LIV">Livingston</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT44 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        value="SMPDB0005_CT44" id="CT44">
+                                    <label class="form-check-label" for="CT44">
+                                        44th Judicial Circuit (Douglas, Ozark &amp; Wright Counties)
+                                    </label>
+                                    <ul class="CT44_counties hide">
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="DGS" id="DGS">Douglas</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="OZK" id="OZK">Ozark</label></li>
+                                        <li><label><input type="checkbox" class="form-check-input" name="checkbox"
+                                                    value="WRI" id="WRI">Wright</label></li>
+                                    </ul>
+                                </div>
+                                <!-- CT45 -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="checkbox"
                                         value="SMPDB0005_CT45" id="CT45">
@@ -158,6 +724,14 @@
                                         <li><label><input type="checkbox" class="form-check-input" name="checkbox"
                                                     value="PIK" id="PIK">Pike</label></li>
                                     </ul>
+                                </div>
+                                <!-- CT46 -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" value="CT46"
+                                        id="CT46">
+                                    <label class="form-check-label" for="CT46">
+                                        46th Judicial Circuit (Taney County)
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -173,6 +747,7 @@
         </div>
     </div>
     <script type="text/javascript" src="../static/js/index.js"></script>
+    <script type="text/javascript" src="../static/js/checkbox_hiding.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
