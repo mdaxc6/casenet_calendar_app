@@ -2,6 +2,7 @@ import pandas as pd
 from pandas import Timestamp
 import time
 import os.path
+import boto3
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
@@ -41,8 +42,16 @@ def slice_per(source, step):
 def authenticate():
     # If modifying these scopes, delete the file token.json.
     SCOPES = ['https://www.googleapis.com/auth/calendar']
-
+    
     creds = None
+    
+    
+    s3 = boto3.resource('s3',
+                    aws_access_key_id= os.environ['KEY'],
+                    aws_secret_access_key=os.environ['SECRET'])
+
+    cred_file = s3.Bucket('casenet-auto-calendar-storage', 'credentials.json')
+    
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
@@ -54,7 +63,7 @@ def authenticate():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                os.environ['credentials.json'], SCOPES)
+                cred_file, SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.json', 'w') as token:
