@@ -205,13 +205,14 @@ def page_nav_df_create(user_json_data):
         
 
 def handle_events(service, main_df, datelist):
-    #print(f"Datelist Length: {len(datelist)}")
+    print(f"Datelist: {datelist}")
     # EVENT HANDLING
     # Check for existing events
     existing_events = []
-    now = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-    events_result = service.events().list(calendarId='primary', timeMin=now,
-                                        maxResults=len(datelist) + 250, singleEvents=True,
+    #now = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
+    start_timestamp = datetime.strptime(datelist[0], '%m/%d/%Y').isoformat() + 'Z'
+    events_result = service.events().list(calendarId='primary', timeMin=start_timestamp,
+                                        maxResults=(len(datelist) + 250), singleEvents=True,
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
     # if events exists, add their summary to the existing events list
