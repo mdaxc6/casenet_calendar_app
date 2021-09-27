@@ -23,15 +23,11 @@ def index():
 @app.route('/', methods=['POST'])
 def process():
     if request.method == "POST":
-        try:
-            data = request.get_json()
-            service = authenticate()
-            main_df, datelist = page_nav_df_create(data)
-            handle_events(service, main_df, datelist)
-            return redirect('/confirmation')
-        except:
-            print("There was an error.")
-            return
+        data = request.get_json()
+        service = authenticate()
+        main_df, datelist = page_nav_df_create(data)
+        handle_events(service, main_df, datelist)
+        return redirect('/confirmation')
         
     else:
         return render_template("index.html")
