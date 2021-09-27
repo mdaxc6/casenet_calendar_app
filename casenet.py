@@ -205,7 +205,7 @@ def page_nav_df_create(user_json_data):
         
 
 def handle_events(service, main_df, datelist):
-    print(f"Datelist: {datelist}")
+    #print(f"Datelist: {datelist}")
     # EVENT HANDLING
     # Check for existing events
     existing_events = []
